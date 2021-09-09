@@ -83,7 +83,10 @@ exports.updateTask = async (req, res, next) => {
         const task = await Task.findOne({_id: req.params.id, owner: req.user._id});
 
         if (!task) {
-            res.status(404).send();
+            res.status(404).json({
+                success: false,
+                error: 'Task not found!'
+            });
         } 
 
         updates.forEach((update) => task[update] = req.body[update]);
@@ -109,7 +112,10 @@ exports.deleteTask = async (req, res, next) => {
 
         const task = await Task.findOneAndDelete({_id: req.params.id, owner: req.user._id});
         if (!task) {
-            return res.status(404).send();
+            return res.status(404).json({
+                success: false,
+                error: 'Task not found!'
+            });
         }
 
         res.status(200).json({
@@ -136,7 +142,10 @@ exports.getTask = async (req, res, next) => {
         const task = await Task.findOne({_id, owner: req.user._id});
 
         if (!task) {
-            return res.status(404).send();
+            return res.status(404).json({
+                success: false,
+                error: 'Task not found!'
+            });
         }
 
         res.status(201).json({
