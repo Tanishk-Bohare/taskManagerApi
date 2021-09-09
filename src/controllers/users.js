@@ -53,7 +53,6 @@ exports.getUser = async (req, res, next) => {
 // @access Private
 exports.updateUser = async (req, res, next) => {
     try {
-
         const updates = Object.keys(req.body);
         const allowedUpdates = [ 'name', 'email', 'password', 'age'];
         const isValidOperation = updates.every((update) => allowedUpdates.includes(update));
@@ -66,11 +65,9 @@ exports.updateUser = async (req, res, next) => {
         }
 
         const user= req.user;
-
+        updates.forEach((update) => user[update] = req.body[update]);
         await user.save();
         
-        console.log(user)
-
         res.status(201).json({
             success: true,
             data: user
