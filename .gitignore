@@ -1,0 +1,7 @@
+node_modules
+config/config.env
+config/dev.env
+config/test.env
+node-course-images.zip
+node-course-images
+client
