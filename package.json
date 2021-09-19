@@ -8,9 +8,6 @@
     "dev": "env-cmd -f ./config/config.env nodemon server.js",
     "test": "env-cmd -f ./config/test.env jest --watch --runInBand"
   },
-  "jest": {
-    "testEnvironment": "node"
-  },
   "keywords": [],
   "author": "",
   "license": "ISC",
@@ -18,6 +15,7 @@
     "@sendgrid/mail": "^7.4.2",
     "bcryptjs": "^2.4.3",
     "colors": "^1.4.0",
+    "cors": "^2.8.5",
     "dotenv": "^10.0.0",
     "express": "^4.17.1",
     "jsonwebtoken": "^8.5.1",
@@ -30,7 +28,6 @@
   },
   "devDependencies": {
     "env-cmd": "^10.1.0",
-    "jest": "^26.6.3",
     "nodemon": "^2.0.7",
     "supertest": "^6.1.3"
   }

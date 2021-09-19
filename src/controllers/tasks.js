@@ -14,7 +14,7 @@ exports.addTask = async (req, res, next) => {
         
         res.status(201).json({
             success: true,
-            data: task
+            data: newtask
         });
     } catch (err) {
         if(err.name === 'ValidationError'){
@@ -60,9 +60,15 @@ exports.getTasks = async (req, res, next) => {
                 sort
             }
         }).execPopulate();
-        res.send(req.user.tasks);
+        res.status(201).json({
+            success: true,
+            data: req.user.tasks
+        });
     } catch (e) {
-        res.status(500).send();
+        res.status(500).json({
+            success: false,
+            error: 'Server Error'
+        });
     }
 }
 

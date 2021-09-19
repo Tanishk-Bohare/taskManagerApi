@@ -12,6 +12,7 @@ exports.addUser = async (req, res, next) => {
         const user = new User(req.body);
 
         // sendWelcomeEmail(user.email, user.name);
+        console.log(req.body)
         
         const token = await user.generateAuthToken();
         user.tokens = await user.tokens.concat({ token });
@@ -90,7 +91,7 @@ exports.updateUser = async (req, res, next) => {
 }
 
 // @desc Delete user
-// @route DELETE /api/v1/user/me
+// @route DELETE /api/v1/users/me
 // @access Private
 exports.deleteUser = async (req, res, next) => {
     try {
